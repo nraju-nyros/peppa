@@ -99,3 +99,104 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 911ms (Views: 812.9ms | ActiveRecord: 60.9ms)
 
 
+Started GET "/" for 10.90.90.110 at 2019-09-06 08:55:08 +0530
+Cannot render console from 10.90.90.110! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (53.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /home/nyros/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /home/nyros/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDish Load (32.1ms)[0m  [1m[34mSELECT  `dishes`.* FROM `dishes` INNER JOIN `ratings` ON `ratings`.`dish_id` = `dishes`.`id` GROUP BY dishes.id ORDER BY avg(ratings.rating) desc LIMIT 6 OFFSET 0[0m
+  ↳ app/views/home/_dishes.html.erb:1
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`imageble_id` = 85 AND `pictures`.`imageble_type` = 'Dish'[0m
+  ↳ app/views/home/_dishes.html.erb:3
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 85[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 85[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 85[0m
+  ↳ app/views/home/_dishes.html.erb:12
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT `restaurants`.* FROM `restaurants` INNER JOIN `dishes_restaurants` ON `restaurants`.`id` = `dishes_restaurants`.`restaurant_id` WHERE `dishes_restaurants`.`dish_id` = 85[0m
+  ↳ app/views/home/_dishes.html.erb:17
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `locations`.`street`, `locations`.`city`, `locations`.`state`, `locations`.`country` FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 55[0m
+  ↳ app/views/home/_dishes.html.erb:33
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT `locations`.* FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 55[0m
+  ↳ app/views/home/_dishes.html.erb:34
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`imageble_id` = 146 AND `pictures`.`imageble_type` = 'Dish'[0m
+  ↳ app/views/home/_dishes.html.erb:3
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 146[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 146[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 146[0m
+  ↳ app/views/home/_dishes.html.erb:12
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT `restaurants`.* FROM `restaurants` INNER JOIN `dishes_restaurants` ON `restaurants`.`id` = `dishes_restaurants`.`restaurant_id` WHERE `dishes_restaurants`.`dish_id` = 146[0m
+  ↳ app/views/home/_dishes.html.erb:17
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `locations`.`street`, `locations`.`city`, `locations`.`state`, `locations`.`country` FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 49[0m
+  ↳ app/views/home/_dishes.html.erb:33
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT `locations`.* FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 49[0m
+  ↳ app/views/home/_dishes.html.erb:34
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`imageble_id` = 82 AND `pictures`.`imageble_type` = 'Dish'[0m
+  ↳ app/views/home/_dishes.html.erb:3
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 82[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 82[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 82[0m
+  ↳ app/views/home/_dishes.html.erb:12
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT `restaurants`.* FROM `restaurants` INNER JOIN `dishes_restaurants` ON `restaurants`.`id` = `dishes_restaurants`.`restaurant_id` WHERE `dishes_restaurants`.`dish_id` = 82[0m
+  ↳ app/views/home/_dishes.html.erb:17
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `locations`.`street`, `locations`.`city`, `locations`.`state`, `locations`.`country` FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 52[0m
+  ↳ app/views/home/_dishes.html.erb:33
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT `locations`.* FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 52[0m
+  ↳ app/views/home/_dishes.html.erb:34
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`imageble_id` = 86 AND `pictures`.`imageble_type` = 'Dish'[0m
+  ↳ app/views/home/_dishes.html.erb:3
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 86[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 86[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 86[0m
+  ↳ app/views/home/_dishes.html.erb:12
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT `restaurants`.* FROM `restaurants` INNER JOIN `dishes_restaurants` ON `restaurants`.`id` = `dishes_restaurants`.`restaurant_id` WHERE `dishes_restaurants`.`dish_id` = 86[0m
+  ↳ app/views/home/_dishes.html.erb:17
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT `locations`.`street`, `locations`.`city`, `locations`.`state`, `locations`.`country` FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 55[0m
+  ↳ app/views/home/_dishes.html.erb:33
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT `locations`.* FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 55[0m  [["restaurant_id", 55]]
+  ↳ app/views/home/_dishes.html.erb:34
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`imageble_id` = 131 AND `pictures`.`imageble_type` = 'Dish'[0m
+  ↳ app/views/home/_dishes.html.erb:3
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 131[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 131[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 131[0m
+  ↳ app/views/home/_dishes.html.erb:12
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT `restaurants`.* FROM `restaurants` INNER JOIN `dishes_restaurants` ON `restaurants`.`id` = `dishes_restaurants`.`restaurant_id` WHERE `dishes_restaurants`.`dish_id` = 131[0m
+  ↳ app/views/home/_dishes.html.erb:17
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `locations`.`street`, `locations`.`city`, `locations`.`state`, `locations`.`country` FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 108[0m
+  ↳ app/views/home/_dishes.html.erb:33
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT `locations`.* FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 108[0m
+  ↳ app/views/home/_dishes.html.erb:34
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`imageble_id` = 137 AND `pictures`.`imageble_type` = 'Dish'[0m
+  ↳ app/views/home/_dishes.html.erb:3
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 137[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT AVG(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 137[0m
+  ↳ app/views/home/_dishes.html.erb:10
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(`ratings`.`rating`) FROM `ratings` WHERE `ratings`.`dish_id` = 137[0m
+  ↳ app/views/home/_dishes.html.erb:12
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT `restaurants`.* FROM `restaurants` INNER JOIN `dishes_restaurants` ON `restaurants`.`id` = `dishes_restaurants`.`restaurant_id` WHERE `dishes_restaurants`.`dish_id` = 137[0m
+  ↳ app/views/home/_dishes.html.erb:17
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `locations`.`street`, `locations`.`city`, `locations`.`state`, `locations`.`country` FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 48[0m
+  ↳ app/views/home/_dishes.html.erb:33
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT `locations`.* FROM `locations` INNER JOIN `locations_restaurants` ON `locations`.`id` = `locations_restaurants`.`location_id` WHERE `locations_restaurants`.`restaurant_id` = 48[0m
+  ↳ app/views/home/_dishes.html.erb:34
+  Rendered home/_dishes.html.erb (287.9ms)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, dishes.id AS dishes_id FROM `dishes` INNER JOIN `ratings` ON `ratings`.`dish_id` = `dishes`.`id` GROUP BY dishes.id[0m
+  ↳ app/views/home/index.html.erb:86
+  Rendered home/index.html.erb within layouts/application (777.1ms)
+Completed 200 OK in 1016ms (Views: 928.8ms | ActiveRecord: 53.9ms)
+
+
