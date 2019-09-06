@@ -1,0 +1,52 @@
+<%= form_for(resource, as: resource_name, data: {validate: true}, url: session_path(resource_name), html: {role: :form, 'data-model' => 'user'}) do |f| %>
+     <%= render 'users/shared/error_messages', :object => f.object %>
+
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control', required: 'true' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password",class: 'form-control', required: 'true' %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-12">
+      <%= f.submit "Log in", class: 'submitBtn btn btn-block btn-success btn', id: 'modal-submit' %>
+    </div>
+    </div>
+
+
+  <p align = "center">or</p>
+    
+ 
+<div class="form-group" >
+   <div class="col-sm-12">
+  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: 'submitBtn btn btn-block btn-danger btn'%>
+    </div>
+  </div>
+<div class="form-group" >
+  <div class="col-sm-12">
+    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path ,class: 'submitBtn btn btn-block btn-primary btn'%></div>
+</div>
+  <% end %>
+
+
+  <style type="text/css">
+    #user_email{
+     
+    }
+     #user_password{
+     
+    }
+    #modal-submit{
+    
+
+    }
+  </style>

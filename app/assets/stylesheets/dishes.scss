@@ -1,0 +1,408 @@
+// Place all the styles related to the dishes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+	.show_img_dish{
+  	width : 400px;
+  	height: 400px;
+	}
+    
+  .filter {
+    height: auto;
+  
+    margin: 0;
+    list-style: none;
+  }
+
+	ul li{
+		display: inline-block;
+	}
+
+	.select_box label {
+    position: relative;
+    margin: 0;
+    width: 100%;
+  }
+
+  .select_box select {
+    width: 100%;
+    padding: 10px 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    margin: 0;
+    color: #83929a;
+    outline: none;
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background: #fff;
+    background-position: center right;
+    border: solid 1px #d8d8d8;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 3px;
+  }
+
+
+  .show_dish{
+      width:100%;
+      height:524px;
+  }
+
+  .rating_dish{
+      position: absolute;
+      top: -420px;
+      left: 0;
+      right: 0;
+      text-align: right;
+      padding: 15px 20px;
+  }
+
+  .card-text_dish {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      left: 0;
+      right: 0;
+      padding: 20px;
+  }
+
+  .dish_info_left {
+      float: left;
+      width: 100%;
+      height: auto;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #d8d8d8;
+      margin-bottom: 20px;
+  }
+
+
+  .rating-lg {
+      float: right;
+      text-align: right;
+      color: #95A3AA;
+      font-size: 14px;
+      font-weight: 700;
+      padding-top: 5px;
+      position: absolute;
+      top: 0px;
+      right: 10px;
+  }
+
+  .review_left:last-child {
+      padding-bottom: 0;
+  }
+  .review_left {
+      float: left;
+      width: 100%;
+      height: auto;
+      padding: 10px 0;
+  }
+
+  .media:first-child {
+      margin-top: 0;
+  }
+  .media:first-child {
+      margin-top: 0;
+  }
+  .media {
+      float: left;
+      width: 100%;
+      height: auto;
+  }
+
+  .media-left {
+      float: left;
+      width: 50px;
+      margin-right: 10px;
+      height: auto;
+  }
+
+  .food_sml_left {
+      float: left;
+      width: 40px;
+      margin-right: 10px;
+      height: auto;
+  }
+
+
+  .media-body {
+      /* float: left; */
+      /* width: 76%; */
+      text-align: left;
+  }
+  .media, .media-body {
+      overflow: hidden;
+      zoom: 1;
+  }
+  .media-left, .media-right, .media-body {
+      display: table-cell;
+      vertical-align: top;
+  }
+  .media-body {
+      width: 10000px;
+  }
+  .media, .media-body {
+      overflow: hidden;
+      zoom: 1;
+  }
+
+  .food_sml_right {
+      float: left;
+      text-align: left;
+      width: 100%;
+      position: relative;
+  }
+
+  .media
+{
+    float:left;
+    width:100%;
+    height:auto;
+}
+.media-left {
+    float: left;
+    width: 50px;
+    margin-right: 10px;
+    height: auto;
+}
+
+.food_small_left{
+  height:30px;
+  
+}
+
+.small_dish{
+  width:40px;
+  border-radius: 100%;
+}
+
+.image-box1 {
+  position: relative;
+  overflow: hidden; 
+}
+
+
+.image-box1 img {
+  max-width: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: block;
+  width: 100%;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.image-box1:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+
+.card-text1{
+  color: #fff;
+}
+
+
+
+a:hover { 
+            text-decoration-line: none; 
+        } 
+
+
+.food_sml_right {
+    float: left;
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+.food_sml_right p i {
+    color: #83929a
+}
+
+.food_sml_right h2 {
+    font-size: 28px;
+    margin: 0 0 10px;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 1px;
+    line-height: 36px;
+}
+
+.food_sml_right .restra-txt {
+    text-align: left
+}
+
+.restra_title {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400;
+    color: #83929a;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.restra-txt {
+    float: left;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: #83929a;
+    line-height: 2;
+    letter-spacing:1px;
+}
+
+.restra-txt a {
+    color: #5ac7f9;
+    text-transform: uppercase
+}
+
+figcaption h2{
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+ a:hover {
+  text-decoration-line: none; 
+        } 
+
+
+.ratings_list {
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #83929a;
+    font-family: 'Playfair Display', serif;
+    text-transform: capitalize;
+}
+
+.no_margin {
+ margin-top: 0px;
+  
+}
+
+
+.previous, .next{
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+ }
+
+
+a:hover{
+  text-decoration: none;  
+}
+
+.single_item a:hover{
+  color: #ffffff;
+}
+
+.restra-txt a:hover{
+  color: #5ac7f9;
+}
+
+.previous {
+ 
+  color: white;
+  font-size: 30px;
+}
+
+.checked {
+  color: #d9d9d9;
+}
+
+.next {
+ 
+  color: white;
+  font-size: 30px;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.top-left {
+  position: absolute;
+  top: 260px;
+  left: 10px;
+}
+
+.top-right {
+  position: absolute;
+  top:  260px;
+  right: 10px;
+}
+
+.user_img{
+  width: 30px;
+  height: 30px;
+}
+
+
+.comment{
+  font-size: 13px;
+  margin-left: 35px;
+}
+.most_review{
+  font-size: 20px;
+  font-weight: 200px;
+  padding-right: 140px;
+}
+
+.left-div {
+    float: left;
+   
+    
+}
+.right-div {
+    float: left;
+    margin-left: 108px;
+    
+}​
+
+.fa{
+  font-size :30px;
+}
+
+.single_item a{
+font-size:30px;
+text-decoration-line: none;
+}
+.single_item a:hover{
+
+text-decoration-line: none;
+}
+
+.restra-txt a:hover{
+  text-decoration-line: none;
+}
+
+.rating_dish1{
+    font-size: 13px;
+    color: #808080;
+}
+
+.posted_dish{
+    font-size: 13px;
+    color: #808080;
+}
+
+
+ #heart {
+  color: #f57e64;  
+  }
+
+  #heart1 {
+  color: #d46a53;
+  }

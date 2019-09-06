@@ -1,0 +1,102 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#form_email{
+	margin-left: 23px;
+}
+
+
+
+#sign_in_from{
+	margin-left: 400px;
+}
+
+/*.new_user{
+	margin-top: 100px;
+}*/
+
+.form1 {
+  margin: 0 auto;
+  width: 470px;
+  background-color: white;
+  padding-left: 0px;
+}
+
+.form1 label {
+    display: inline-block;
+    text-align: right;
+     
+}
+
+.modal_form{
+	margin-top: 0px;
+}
+
+.homepage_dish{
+    height: 100%;
+    width: 50%;
+    position:fixed;
+  }
+  
+  .login{
+    padding-right: 20px;
+    color:#0066ff;
+    font-size: 20.3px;
+    line-height: 1.44359;
+    border: 0px;
+    font-weight:700;
+
+
+  }
+
+  .login a:hover{
+
+  }
+
+  .signup{
+    padding-right: 100px;
+      color:#0066ff;
+    
+    font-size: 20.3px;
+    line-height: 1.44359;
+    border: 0px;
+      font-weight:700;
+
+
+  }
+
+  .top-left {
+  position: absolute;
+  top: 36px;
+  left: 35px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.bottom-right {
+
+}
+.bottom_img{
+  width: 300px;
+  height: 300px;
+}
+.main_header{
+  font-weight: 800;
+  font-size:40px;
+  color: black;
+}
+
+a:hover{
+  text-decoration-line: none;
+  
+}
+
+.u-dimension-2 {
+    box-shadow: 0 0 0 1px rgba(67,41,163,.1), 0 1px 8px 0 rgba(67,41,163,.1);
+}
+
+
+

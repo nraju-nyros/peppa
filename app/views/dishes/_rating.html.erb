@@ -1,0 +1,81 @@
+<div align="center">
+  <% @dish.pictures.each do|p|%>
+    <%= image_tag(p.image_url, :class => 'img') %> 
+  <% end %>  
+  <h6 style="color: black; padding-top: 10px;text-transform: capitalize;"> <%= @dish.name %> </h6>
+
+  <%= form_for @rating, :url => {:action => "create", :controller => "ratings"} do |f| %>
+     <% if current_user.present? %>
+        <%= f.hidden_field :user_id, :value => current_user.id%>
+        <%= f.hidden_field :user_name, :value => current_user.name%>
+      <% end %>
+      <%= f.hidden_field :dish_id, :value => @dish.id%>
+               
+    <div class="form-group">
+      <div class="col-sm-8">    
+      
+          <%= f.text_area :comments ,:rows => 2, :cols => 50, :class => 'form-control', :placeholder => 'Write your review here'%>  
+      </div>
+    </div> 
+ 
+    <div class="form-group">
+      <div class="col-sm-8">  
+     
+        <span class="rating-form"></span>
+      </div>
+    </div>
+    
+    <div class= "form-group" >
+      <div class="col-sm-8">    
+        <%= f.submit "Submit Review",class: "btn btn-info btn-sm modal_btn" %> 
+      </div>
+    </div> 
+  <% end %>
+</div>
+
+<style type="text/css">
+  .img{
+    border-radius: 50%;
+  }
+
+  .error{
+    color: red;
+    font-size: 12px;
+  }
+</style>
+
+<script type="text/javascript">
+
+    $(".modal_btn").click(function(){
+     
+     
+      $(".new_rating").validate();
+
+      $("#rating_comments").rules("add", {
+        required:true,
+          minlength:10,
+  
+           messages: {
+                required: "*Please Enter comment."
+        }
+      });
+
+    
+      
+
+   
+    })
+
+
+
+
+
+
+  
+
+
+</script>
+<script type="text/javascript">
+   
+
+</script>

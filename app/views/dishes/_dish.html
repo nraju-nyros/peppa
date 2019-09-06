@@ -1,0 +1,190 @@
+
+  <div class="media-body">
+    <div class="food_sml_right">
+      <h2 class="restra_title" ><%= @dish.name %></h2>
+        <p class="restra-txt" style = "border-bottom: 2px solid #d8d8d8;">
+          <% @dish.restaurants.each do |r| %> 
+            <%= link_to r.name, restaurant_path(r), :class => 'rest_name' %>
+          <% end %>  
+        </p>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="image-box col-lg-12 col-md-12 col-sm-12 col-xs-12 no_padding_right 
+      no_padding_left hover_outr" style="margin: 0px;"> 
+      <div class="single_item card">
+        <%= link_to dish_path(@dish) do %> 
+          <div class="image-box2">
+           <% @dish.pictures.each do|p|%>
+              <%=image_tag(p.image_url.to_s, :class => 'show_dish')%>
+            <% end %>
+          </div>  
+        <% end %>
+
+        <% unless  @dish.id == Dish.first.id   %>
+          <%= link_to '', Dish.get_previous_dish(@dish), :class => 'fa fa-chevron-left top-left previous round">&#8249;', :style => 'top:260px; left:10px;'  %>
+         
+        <% end %>
+
+        <% unless  @dish.id == Dish.last.id   %>
+          <%= link_to  '', Dish.get_next_dish(@dish), :class => 'fa fa-chevron-right top-right next round">&#8249;' %>
+        <% end %>
+    
+        <div class="rating">
+          <%= link_to image_tag("rating.png"),'#modaldevise', "data-toggle" => "modal", "data-target"=>"#modaldevise"  %>
+             <div class="modal fade" id="modaldevise" tabindex="-1" role="dialog" 
+                aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 style ="color: black;"class="modal-title" id="myModalLabel">Add rating</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body modal_form">
+                      <%= render 'rating'%>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <span>
+                <%= @dish.ratings.average(:rating).present? ? @dish.ratings.average(:rating).round(1) : 0 %>
+              </span>
+              <p class="votes"><%= @dish.ratings.count(:rating) %> votes</p>
+        </div>
+             
+        <div class="card-text_dish">
+          <figcaption>
+            <div>
+              <h2><%= @dish.name %></h2>
+              <% @dish.restaurants.each do |r|%>
+                <p><span style="font-size:15px; float: left;"><%= r.name %></span>
+                   <span class="price">$<%= @dish.price%></span>
+                </p>
+              <% end %>
+            </div>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+
+   
+
+  </div>
+</div>
+  
+<br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no_padding_right 
+            no_padding_left hover_outr"> 
+      <h4>Overall Rating &nbsp;   <i class="text-warning fa fa-star"></i>
+          <%= @dish.ratings.average(:rating).present? ? @dish.ratings.average(:rating).round(1) : 0 %>
+      </h4><i>Based on <%= @dish.ratings.count(:rating) %> Reviews</i><br>
+
+      <div>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>&nbsp;
+         <span>(<%= @dish.ratings.where(rating: 5).count %>)</span>
+      </div>
+
+      <div>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <span class="fa fa-star checked"></span>&nbsp;
+         <span>(<%= @dish.ratings.where(rating: 4).count %>)</span>
+      </div>
+
+      <div>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>&nbsp;
+         <span>(<%= @dish.ratings.where(rating: 3).count %>)</span>
+      </div>
+
+      <div>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>&nbsp;
+         <span>(<%= @dish.ratings.where(rating: 2).count %>)</span>
+      </div>
+
+      <div>
+        <i class="text-warning fa fa-star"></i>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>&nbsp;
+        <span>(<%= @dish.ratings.where(rating: 1).count %>)</span>
+      </div>
+
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no_padding_right 
+              no_padding_left hover_outr" style="margin: 0px;"> 
+      <div align="center">
+        <span class="link more btn_outer">
+          <span class="most_review"> All Reviews </span>
+          <%= link_to 'Write a Review','#modaldevise', "data-toggle" => "modal", "data-target"=>"#modaldevise", :class => 'load-more', :style => 'margin-left:100px;' %>
+        </span>
+      </div><br>
+      <div class="review_left" >
+     
+        <% @dish.ratings.each do |rate| %>
+        <div class="media" style="margin-bottom: 15px;">
+         
+
+          <div class="media-body">
+            <div class="food_sml_right">
+              <div style="background-color:#f2f2f2; padding: 15px;"class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div >
+                  <div>
+                    <h5 style="margin-bottom: 15px;"> <%= image_tag('user.png', :class => 'user_img')%> &nbsp;<%= rate.user_name %> </h5>
+                  </div>
+                  
+                  <div class="left-div">
+                    <span class="rating_dish1">Rating</span><br>
+                    <span  style="margin-left: 10px;">
+                    <% rate.rating.to_i.times do  %>
+                      <i class="text-warning fa fa-star"></i>
+                    <% end %>   
+                     </span>   
+                  </div> 
+
+                  <div class="right-div">
+                    <span class="posted_dish">Posted</span><br>
+                    <span  style="margin-left: 10px;">
+                    
+                     <%= rate.created_at.localtime.strftime '%d-%m-%y %H:%M:%S' %>
+
+                   </span> 
+                  </div>   
+                
+                  
+                </div>
+                <br><br><br> 
+                <div>
+                    <%= rate.comments %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+

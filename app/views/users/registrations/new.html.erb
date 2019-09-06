@@ -1,0 +1,89 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg  static-top u-dimension-2" style="height: 66px;">
+  <div class="container">
+    <%= link_to image_tag('logo.png', :class => 'navbar-brand'), root_path   %>
+    <div class="header-list loc-srch">
+      <ul class="nav navbar-nav">
+       
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <ul class="nav navbar-nav ml-auto">
+            
+          </ul>
+        </li>   
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<body >
+<div class="container">
+  <div class="form-horizontal no-border form u-dimension-2"  style ="margin-top:20px; width: 430px;"align="center" >
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+     <h3 align="center">Sign up</h3>
+      
+      <div class="form-group">
+        <div class="col-sm-12">
+          <%= f.label :name %>
+           <span class="err"><%= resource.errors[:name].join('. ') %></span><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name",class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <%= f.label :email %>
+           <span class="err"><%= resource.errors[:email].join('. ') %></span><br />
+          <%= f.email_field :email, autofocus: true,class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <%= f.label :password %>
+           <span class="err"><%= resource.errors[:password].join('. ') %></span><br />
+          <%= f.password_field :password, autocomplete: "current-password",class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <%= f.label :password_confirmation %>
+          <span class="err"><%= resource.errors[:password_confirmation].join('. ') %></span><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off",class: 'form-control'%>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-sm-12">
+            <%= f.submit "Create your account", class: 'submitBtn btn btn-block btn-primary btn', id: 'modal-submit' %>
+        </div>
+      </div>
+
+    <% end %>
+    <p> Have an account? <%= link_to "Sign in", new_user_session_path%> </p>
+  </div>
+</div> 
+
+<style type="text/css">
+  .form-group{
+    width:356px;
+  }
+
+  .form{
+   
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .col-sm-12{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+</style>
+
+
+

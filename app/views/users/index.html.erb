@@ -1,0 +1,130 @@
+
+
+<html>
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-md fixed-top">
+  <div class="container" style="height: 60px;">
+      <%= link_to image_tag('logo.png', :class => 'navbar-brand'), root_path   %>
+    <div class="header-list loc-srch">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <%= link_to 'Login', new_user_session_path, :class => 'nav-link' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'Signup', new_user_registration_path, :class => 'nav-link' %>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid no_padding_right no_padding_left">
+
+ <div class="bg-homepage">
+  <div class="home-title">
+    <h6 class="title-1">THE MOST INTERESTING FOOD IN THE WORLD</h6>
+    <h1 class="title-2">Discover the <span class="prime-color">flavors</span><br><span class="style-change">of <span class="prime-color">food</span>fun</span></h1>
+  </div>
+</div>
+
+ 
+</div>
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+<style type="text/css">
+  .main_header{
+   color: #847d7d;
+   margin-top:100px;
+   margin-left: 80px;
+  }
+    
+  .no_padding_right{
+    padding-right: 0px;
+  }
+  .homepage_img{
+    height: 470px;
+    width: 100%;
+  }
+  .no_padding_left{
+    padding-left: 0px;
+  }
+
+  a:hover{
+    text-decoration-line: none;
+     color:#0066ff;
+   font-weight:700;
+  }
+
+  .home{
+    height: 100%;
+    width: 100%;
+  }
+
+  html{
+    width:100%;
+    height:100%;
+  }
+
+  body{
+    width:100%;
+    height:100%;
+  }
+
+  .bg-homepage {
+    background-image: url(/assets/slide1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    margin-top: -8px;
+  }
+
+  .home-title {
+    text-align: center;
+    color: #fff;
+    padding-top: 214px;
+  }
+
+  .title-2 {
+    color: #fff;
+    font-family: "Playfair Display",serif;
+    font-size: 60px !important;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .title-1 {
+    color: #fff;
+    font-size: 16px !important;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .prime-color {
+    color: #ffb606;
+  }
+
+  .style-change {
+    font-style: normal;
+  }
+
+</style>

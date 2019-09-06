@@ -1,0 +1,75 @@
+
+<div class="container" ><br>
+  <table  class="table " >   
+    <thead class="thead-light">
+      <h2><%= @restaurant.name %></h2>
+      <%= link_to 'Add dish', new_admin_restaurant_dish_path(@restaurant), :class => 'btn add btn-sm btn-success'%><br><br>
+      <tr> 
+        <th>id</th>   
+        <th>dish name</th> 
+        <th>Dish image</th>
+        <th>Price</th>
+        <th>Avg Rating</th>
+        <th>Count </th>
+        <th>Add Rating</th>
+        <th>Actions</th> 
+      </tr>   
+    </thead>   
+    <tbody>  
+      <% @dishes.each do|d|%>
+        <tr>
+          <td><%= d.id %></td>
+          <td><%= d.name %></td>
+          <td><% d.pictures.each do|p|%>
+              <%= link_to image_tag(p.image_url.to_s ,:class => 'img'),'#',
+              {:class=>" ", "data-toggle"=>"modal", "data-target" => "#myModal-#{p.id}"}%>
+                <!-- Modal for image view-->
+              <div class="modal fade"  id="myModal-<%= p.id %>" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content modal-img-content">
+                    <div class="modal-body">
+                      <%= image_tag p.image_url.to_s ,:class => 'modal-img'%>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% end %></td>
+          <td><%= d.price %></td>
+          <td><%= d.ratings.average(:rating) %></td>
+          <td><%= d.ratings.count(:rating) %></td>
+          <td><%= link_to 'Add rating', new_admin_restaurant_dish_rating_path(@restaurant,d), :class => 'btn btn-sm btn-info'%></td>
+          <td>
+              <%= link_to "Edit", edit_admin_restaurant_dish_path(@restaurant,d),:class => 'glyphicon glyphicon-edit btn btn-sm btn-success'%>
+              <%= link_to 'Delete', '#',{:class=>"btn btn-danger btn-sm", "data-toggle"=>"modal", "data-target" => "#delete-#{d.id}"} %>
+              <div class="modal fade  " id="delete-<%= d.id %>">
+                <div class="modal-dialog ">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3>Dish Delete ?</h3>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure to delete this Restaurant?</p>
+                    </div>
+                    
+                    <div class="modal-footer">
+                      <%= link_to 'Delete',admin_restaurant_dish_path(@restaurant,d), method: :delete, :class => 'btn btn-danger btn-sm' %>
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div></td>
+        </tr>
+      <% end %>   
+    </tbody>   
+  </table>
+    <p align="center"><%= link_to 'Back to Restaurants', admin_restaurants_path, :class => 'btn btn-sm btn-info'%></p> 
+</div>  
+
+
+
+  

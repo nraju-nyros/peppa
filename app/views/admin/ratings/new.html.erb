@@ -1,0 +1,31 @@
+<br><br>
+<div class="container" >
+  <div align="center" class="form">
+    <% @dish.pictures.each do|p|%>
+      <%= image_tag(p.image_url, :class => 'img') %> 
+    <% end %>  
+    <h5><%= @dish.name %> Add Rating</h5>
+
+    <%= form_for @rating, url: {action: :create} do |f| %>
+      <div class="form-group">
+        <div class="col-sm-8">    
+          <label>Add rating </label>
+          <span class="err"><%= @rating.errors[:rating].join('. ') %></span><br/>
+            <%= f.text_field :rating , :class => 'form-control', :placeholder => 'Rating'%>
+        </div>
+      </div> 
+      
+      <div class= "form-group" >
+        <div class="col-sm-8">    
+          <%= f.submit "Save",class: "btn btn-block btn-primary btn-md" %> 
+        </div>
+      </div>
+
+       <div class= "form-group" >
+        <div class="col-sm-8">    
+          <%= link_to 'back to dishes',admin_restaurant_dishes_path,:class => "btn btn-sm btn-info "  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

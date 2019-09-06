@@ -1,0 +1,22 @@
+
+//  // $('.dishes').html("<%= escape_javascript render(:partial => 'home/search_dishes') %>");
+if("<%= params[:price] || params[:ratings] || params[:ratings_filter] || params[:category] || params[:restaurant_id] %>")
+  {
+  $('#dishes').html('<%= j render(:partial => "home/search_dishes")  %>');
+  
+  console.log("params_price" , "<%= params[:price] || params[:ratings] || params[:ratings_filter] || params[:category] || params[:restaurant_id] %>")
+
+  }
+
+
+else{
+
+$('#dishes').append('<%= j render(:partial => "home/search_dishes")  %>');
+<% if @dishes.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@dishes) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+
+}
+

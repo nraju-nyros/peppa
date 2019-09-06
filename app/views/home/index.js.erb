@@ -1,0 +1,19 @@
+//  // $('.dishes').html("<%= escape_javascript render(:partial => 'home/search_dishes') %>");
+console.log("<%= params[:from_search]%>")
+if("<%= params[:from_search]%>"){
+  $('#dishes').html('<%= j render(:partial => "home/dishes")  %>');
+  $('.pagination').remove();
+
+}
+
+
+else{
+
+$('#dishes').append('<%= j render(:partial => "home/dishes")  %>');
+<% if @dishes.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@dishes) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+
+}

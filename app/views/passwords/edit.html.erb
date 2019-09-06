@@ -1,0 +1,105 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg  static-top u-dimension-2" style="height: 66px;">
+  <div class="container">
+    <%= link_to image_tag('logo.png', :class => 'navbar-brand'), root_path   %>
+    <div class="header-list loc-srch">
+      <ul class="nav navbar-nav">
+       
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <ul class="nav navbar-nav ml-auto">
+            
+          </ul>
+        </li>   
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container" align="center">
+  <div class="form-horizontal no-border form u-dimension-2"  style ="margin-top:30px; width: 450px;"align="center" >
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <%= f.label :password, "New password" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-12">
+         <%= f.label :password_confirmation, "Confirm new password" %><br />
+         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+       </div>
+     </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <%= f.submit "Change my password", class: 'submitBtn btn btn-block btn-success btn' %>
+       </div>
+      </div>
+
+      <p align = "center">or</p> 
+   
+      <%= link_to "Create your account", new_user_registration_path%><br>
+      <%= link_to "Log in", new_user_session_path%>
+    <% end %>
+  </div>
+</div> 
+
+
+
+
+
+
+
+
+<style type="text/css">
+  .form-group{
+    width:356px;
+  }
+
+  h2{
+    display: none;
+  }
+
+  .form{
+  
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+  .col-sm-12{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+ 
+  .error{
+    color: red;
+  }
+  .forgot_txt{
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+   
+
+  .forgot_pwd{
+    font-size: 25px;
+    font-weight: 700;
+
+   }
+  #error_explanation li{
+    color: red;
+  }
+</style>
+

@@ -1,0 +1,6 @@
+$('#new_user').html("<%= j (render 'new') %>");
+$('#modaldevise').modal('show');
+$("#new_user").slideDown(350);
+$('#modaldevise').on('shown.bs.modal', function () {
+$('#modaldevise').focus()
+})
