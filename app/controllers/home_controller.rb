@@ -17,7 +17,8 @@ class HomeController < ApplicationController
       @dishes = location_dishes.paginate(:page => params[:page], :city => params[:location], :per_page => 50)
 
     else
-      @dishes = Dish.by_rating.paginate(:page => params[:page], :per_page => 6)
+     
+      @dishes = Dish.paginate(:page => params[:page], :per_page => 6)
           respond_to do |format|
             format.html
             format.js
@@ -56,7 +57,7 @@ class HomeController < ApplicationController
       @restaurant = Restaurant.find(params[:restaurant_id])
       @dish1 = @restaurant.dishes.where("name LIKE ?", "%#{params[:search]}%")
       @dish2 = @restaurant.dishes.all.where("name NOT LIKE ?", "%#{params[:search]}%")
-      @dishes = (@dish1  + @dish2).paginate(page: params[:page],:per_page => 6)
+      @dishes = (@dish1  + @dish2).paginate(page: params[:page],:per_page => 50)
     end
 
   end

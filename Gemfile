@@ -90,19 +90,17 @@ gem 'will_paginate'
 gem 'geocoder'
 gem 'gmaps4rails'
 
-# paypal_payment_gateway
-gem 'activemerchant'
+
 
 # Email sent 
 gem 'delayed_job_active_record'
 
-# Marker cluster
-gem 'leaflet-markercluster-rails'
+
 
 
 gem 'jquery-star-rating-rails'
 
-gem 'client_side_validations'
+gem 'acts_as_votable'
 
 gem 'bcrypt-ruby'
 

@@ -1,4 +1,4 @@
-<% if @dishes.present? %>   
+<% if @dishes.present? %>
   <% @dishes.each do |d| %>
     <% d.pictures.each do|p|%>
       <div class="col-md-6 image-box" onclick="window.location.href='<%=dish_path(d)%>'">
@@ -41,13 +41,12 @@
     <% end %>
   
   <% end %>
- 
-<% else %>
-  <div class="no_data" style="margin-left: 190px;">
-    No results found
-  </div>
+  <% else %>
+
+  <div style="margin-left: 200px;">No results found</div>
   
 <% end %>
+ 
 
 
 

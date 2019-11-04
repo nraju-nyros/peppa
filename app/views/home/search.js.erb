@@ -3,6 +3,7 @@
 if("<%= params[:price] || params[:ratings] || params[:ratings_filter] || params[:category] || params[:restaurant_id] %>")
   {
   $('#dishes').html('<%= j render(:partial => "home/search_dishes")  %>');
+  $('.pagination').remove();
   
   console.log("params_price" , "<%= params[:price] || params[:ratings] || params[:ratings_filter] || params[:category] || params[:restaurant_id] %>")
 

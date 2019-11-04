@@ -1,0 +1,137 @@
+<% pre_rated = @dish.ratings.find { |rating| rating.user_id == current_user.id} %>
+  <div align="center">
+    <span class="link more btn_outer">
+      <span class="most_review"> All Reviews </span>   
+        <% if current_user.nil? %> 
+          <%= link_to 'Write a Review', dish_likes_path(@dish), :class => 'load-more', :style => 'margin-left:100px;', method: :post %> 
+        <% end %>
+
+        <% if current_user.present? %>
+          <% pre_rated = @dish.ratings.find { |rating| rating.user_id == current_user.id} %>
+            <% if pre_rated.nil? %>
+            <%= link_to 'Write a Review','#modaldevise', "data-toggle" => "modal", "data-target"=>"#modaldevise", :class => 'load-more', :style => 'margin-left:100px;' %>
+              <div class="modal fade" id="modaldevise" tabindex="-1" role="dialog" 
+                  aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 style ="color: black;"class="modal-title" id="myModalLabel">Add Rating</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body modal_form">
+                      <%= render 'dishes/rating'%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
+    </span>
+  </div><br>
+
+    <div class="review_left"  >
+      <% @dish.ratings.each do |rate| %>
+         <div class="media" style="margin-bottom: 15px; background-color:#fff; padding: 15px;border: 1px solid #fbeded;
+              box-shadow: 1px 2px 3px #e2e2e2;">
+         
+          <div class="media-body">
+            <div class="food_sml_right"  style="">
+              <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+               
+                  <div>
+                    <p style="margin-bottom: 15px; "> 
+                      <span style="text-transform: capitalize;">
+                        <%= image_tag('user.png', :class => 'user_img')%> &nbsp;<%= rate.user_name %>  
+                      </span>
+            
+                      <span  class = "time" style="margin-left: 10px;float: right;font-size: 11px;color: #695f5f;">
+                        <%= time_ago_in_words(rate.updated_at) %> ago
+                      </span>
+                    </p>
+                  </div>
+                  
+                  <div id ="user_<%= rate.user_id %>">
+                    <div class="review-rating" data-score = "<%= rate.rating%>"></div>
+                    <p style = 'font-size: 14px;'><%= rate.comments %>  </p>
+                    <span id ="rating_<%= rate.id %>">
+                      <% if current_user.present? %>
+                        <% like = rate.votes_for.find { |vote| vote.vote_flag == true} %>
+                        <% dislike = rate.votes_for.find { |vote| vote.vote_flag == false} %>
+
+                        <% if like.present? %>
+                          <%= link_to like_dish_rating_path(@dish, rate), method: :put, remote: :true do %>
+                           <i class="fa fa-thumbs-up" style="font-size:18px;"></i>&nbsp;
+                            <%= rate.get_upvotes.size %>
+                            <% end %>&nbsp;&nbsp;
+
+
+                              <%= link_to unlike_dish_rating_path(@dish, rate), method: :put, remote: :true do %>
+                           <i class="fa fa-thumbs-o-down" style="font-size:18px;"></i>&nbsp;
+                            <%= rate.get_downvotes.size %>
+                            <% end %>
+            
+                        <% elsif dislike.present? %>
+                          <%= link_to like_dish_rating_path(@dish, rate), method: :put, remote: :true do %>
+                          <i class="fa fa-thumbs-o-up" style="font-size:18px;"></i>&nbsp;
+                          <%= rate.get_upvotes.size %>
+                          <% end %>&nbsp;&nbsp;
+
+                          <%= link_to unlike_dish_rating_path(@dish, rate), method: :put, remote: :true do %>
+                          <i class="fa fa-thumbs-down" style="font-size:18px;"></i>&nbsp;
+                          <%= rate.get_downvotes.size %>
+                          <% end %>&nbsp;&nbsp;
+                       
+
+                      <% else %>
+                        <%= link_to like_dish_rating_path(@dish, rate), method: :put, remote: :true do %>
+                          <i class="fa fa-thumbs-o-up" style="font-size:18px;"></i>&nbsp;
+                          <%= rate.get_upvotes.size %>
+                        <% end %>&nbsp;&nbsp;
+
+                        <%= link_to unlike_dish_rating_path(@dish, rate), method: :put, remote: :true do %>
+                          <i class="fa fa-thumbs-o-down" style="font-size:18px;"></i>&nbsp;
+                            <%= rate.get_downvotes.size %>
+                        <% end %>&nbsp;&nbsp;
+                    <% end %>
+                 
+                  <% end %>                    </span>
+                    <span style="float: right">
+                      <% if pre_rated.present? %>
+                        <% if current_user.id == rate.user_id %>
+                        <%= link_to 'Edit', edit_dish_rating_path(@dish, rate.id), :remote => true ,
+                        :class => 'review_action'  %>
+                         <%= link_to 'Delete', dish_rating_path(@dish, rate.id), :remote => true ,:class => 'review_action' ,method: :delete %>
+                        <% end %>
+                      <% end %>
+                    </span>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <% end %>
+      </div>
+
+
+<script type="text/javascript">
+  
+  $('.rating-form').raty({
+    path:'/assets/',
+    scoreName: 'rating[rating]',
+    score: 1
+
+  });
+
+  $(".review-rating").raty({
+        readOnly: true,
+        score: function() {
+        return $(this).attr("data-score");
+        },
+        path: "/assets/"
+  });
+
+  
+</script>
+

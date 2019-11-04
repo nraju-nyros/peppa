@@ -15,7 +15,6 @@
     transform: translate3d(0, 0, 0);
 }
 
-
 .nav-link{
     color: #babbbf;
     text-decoration: none;
@@ -37,21 +36,6 @@
     width:100%;
 }
 
-/*.image_text{
-    padding-top: 140px;
-    float: left;
-    width: 100%;
-    height: auto;
-    color: #fff;
-    text-align: center;
-    font-size: 36px;
-    font-style: normal;
-    line-height: 50px;
-    font-weight: 400;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}*/
 
 .title{
     color: #fff;
@@ -68,6 +52,32 @@
     font-family: 'Playfair Display', serif;
 }
 
+
+
+.search{
+    width: 460px;
+    background: white;
+    margin: auto;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+
+.food_search{
+    width: 77% !important;
+    height: 100% !important;
+    float: left;
+    border: 0px !important;
+    outline: 0px;
+    padding: 10px !important;
+    border-right: 1px solid #b3afaf !important;
+    border-radius: 0px !important;
+    clear: both;
+}
+
+
+
+
 /*loop dishes data*/
  .sec_title {
   width: 100%;
@@ -82,36 +92,11 @@
   margin-top: 64px;
   clear: both;  
 }
-/*.dish-img {
-  width: 100%;
-  height: 300px;
-  margin-bottom: 25px;
-  transition:0.5s;
 
-}
-.dish-img1 {
-  max-width: 100%;
-  transition: all 0.3s;
-  display: block;
-  width: 100%;
-  height: auto;
-  transform: scale(1);
-}*/
 .col-md-4, .col-md-6 {
   float: left;
 }
-/*.dish-img1:hover {
-  transform: scale(1.1);
-}*/
-/*.caption {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 400;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.25;
-}
-*/
+
 figcaption {
   text-align: left;
   position: absolute;
@@ -155,29 +140,7 @@ figcaption {
   overflow: hidden;
   border-radius: 0px !important;
 }
-/*.restaurant {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 500px;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.25;
-}
-.location1 {
-  min-height: 50px;
-  border: 1px solid #cac6c6;
-  background: #fff;
-  padding: 10px;
-  margin-top: -2px;
-  width: 100%;
-  border-radius: 3px;
-  border-top: none;
-}
-.address {
-  font-size: 13px;
-  color: grey;
-  display: flex;
-}*/
+
 
 .rating {
   position: absolute;
@@ -187,39 +150,28 @@ figcaption {
   font-family: 'Playfair Display', serif;
   font-size: 18px;
   font-weight: 700;
+  width:100%;
+  float:right;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.65)), to(transparent));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 )
 }
 .rating:hover {
   cursor: pointer;
 }
 .rating span {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    padding-left: 15px;
-    display: inline-block;
-    position: relative;
-    top: 2px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  padding-left: 15px;
+  display: inline-block;
+  position: relative;
+  top: 2px;
 }
 figcaption:hover {
   cursor: pointer;
 }
-/*.votes {
-  position: absolute;
-  right: 20px;
-  top: 35px;
-  font-family: 'Playfair Display', serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .8px;
-  color: #fff;
-  text-transform: uppercase;
-}
 
-.fav {
-  position: absolute;
-  right: 45px;
-  top: 13px; 
- }*/
  .dish {
   position: relative;
   top: 94px;
@@ -262,44 +214,6 @@ figcaption:hover {
     background-color: #f7aa97;
     color: white;
 }
-
-
-.search{
-    width: 460px;
-    background: white;
-    margin: auto;
-    border-radius: 5px;
-    padding: 8px;
-}
-
-.food_search{
-    width: 77% !important;
-    height: 100% !important;
-    float: left;
-    border: 0px !important;
-    outline: 0px;
-    padding: 10px !important;
-    border-right: 1px solid #b3afaf !important;
-    border-radius: 0px !important;
-    clear: both;
-}
-
-/*.location{
-    font-size: 10px;
-}
-
-.top_rated_title{
-    width: 100%;
-    height: auto;
-    text-align: center;
-    text-transform: uppercase;
-    color: #7b90a2;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 37px;
-    margin-top: 47px;
-}*/
 
   .btn_outer {
     float: left;
@@ -423,95 +337,14 @@ figcaption:hover {
     
 }
 
-/*
-.rating {
-    position: absolute;
-    top: -238px;
-    left: 0;
-    right: 0;
-    text-align: right;
-    padding: 15px 20px;
-}*/
 
-/*.dish_rating{
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    padding-left: 5px;
-    display: inline-block;
-    position: relative;
-    top: 2px;
-
-}*/
-
-/*.votes{
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    color: #fff;
-    text-transform: uppercase;
-}*/
-
-/*.search .image-box {
-    position: relative;
-    margin: auto;
-    overflow: hidden;
-    width: 311px;
-}
-
-.search  .image-box img {
-    max-width: 100%;
-    transition: all 0.3s;
-    display: block;
-    width: 100%;
-    height: 350px;
-    transform: scale(1);
-}
-
-.search .image-box:hover img {
-    transform: scale(1.1);
-}
-
-.search .card{
-    width:314px;
-}
-
-
-
-
-
-
-.dish_btm {
-    display: inline-block;
-    border-right: 2px solid #d8d8d8;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.location_text{
-    color: #7b90a2;
-    background-size: 24px auto;
-    line-height: 15px;
-}
-
-.location_text:hover{
-    text-decoration: none;
-    color: #7b90a2;
-}*/
-
-/*Dish render*/
   
 .rating {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     text-align: right;
     padding: 15px 20px;
-    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
-    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
 }
 
 .rating span {
@@ -529,13 +362,13 @@ figcaption:hover {
     vertical-align: top
 }
 
-.rating img
+.rating a
 {
     transition: all .2s linear;
     -webkit-transition: all .2s linear;
     transition: all .2s linear;
 }
-.rating:hover img {
+.rating:hover a {
     -webkit-transform: scale(1.1);
     transform: scale(1.1)
 }
@@ -560,7 +393,7 @@ figcaption:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    min-height: 190px;
+    min-height: 90px;
     vertical-align: bottom;
     background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
     background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
@@ -823,14 +656,6 @@ label.category{
     padding-left: 0
 }
 
-/*.dish_image_box{
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-  width: 540px;
-  margin-bottom: 20px;
-}
-*/
 
 
 

@@ -1,2 +1,9 @@
-$('#likes-count').html('<%= pluralize(@dish.likes.count, 'Like') %>');
-$('#like-button').html('<%= like_button_tag @dish, pre_like %>');
+
+ $("#dish_<%= @dish.id %>").html('<%= j render(:partial => "likes/likes", :dish_id => params[:id] ) %>');
+ 
+
+
+
+
+
+  

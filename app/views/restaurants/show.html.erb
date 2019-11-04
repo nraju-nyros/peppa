@@ -1,31 +1,39 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md fixed-top" style="">
   <div class="container">
-      <%= link_to image_tag('logo.png', :class => 'navbar-brand'), home_index_path   %>
+      <%= link_to image_tag('logo.png', :class => 'navbar-brand'), root_path   %>
     <div class="header-list loc-srch">
       <ul class="nav navbar-nav">
         
       </ul>
     </div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item active">
           <ul class="nav navbar-nav ml-auto">
             <% if current_user.present? %>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                  <%= image_tag('user.png', :class => 'user_image') %> <%= current_user.name %>
-                </a>
-                <div class="dropdown-menu" style="width:100px; border-right-width: 1px; margin-right: 20px;">
-                      <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'dropdown-item') %>
-                </div>     
-              </li>
-            <% end %>
+            <li class="nav-item dropdown">
+              
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <%= image_tag('user.png', :class => 'user_image') %> <%= current_user.name %></a>
+              <div class="dropdown-menu" style="width: 100px;"> 
+                <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'dropdown-item') %>
+              </div>
+
+              <% else %>
+
+                <li class="nav-item active">
+                  <%= link_to 'Login', new_user_session_path, :class => 'nav-link' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to 'Signup', new_user_registration_path, :class => 'nav-link' %>
+                </li> 
+              <% end %>
+            </li>
           </ul>
-        </li> 
-        
-      </ul> 
-        
+        </li>  
+      </ul>
       
     </div>
   </div>
@@ -97,7 +105,7 @@
             <div class="select_box tag_by">
               <label>
                 <select id="tag_filter" class="sort_dish_dietary">
-                <option value="" selected="">All Dietary </option>
+                <option value="all" >All Dietary </option>
                 <option value="1" >VEG</option>
                 <option value="2" >NON-VEGETARIAN</option>
                 <option value="3" >DRINKS</option>
@@ -118,25 +126,25 @@
 
 
 
+<script type="text/javascript">
+  
+  $('.rating-form').raty({
+    path:'/assets/',
+    scoreName: 'rating[rating]',
+    score: 1
 
+  });
 
+  $(".review-rating").raty({
+        readOnly: true,
+        score: function() {
+        return $(this).attr("data-score");
+        },
+        path: "/assets/"
+  });
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-.checked {
-  color: #fff;
-  font-size:12px;
-}
-</style>
-
-
-
-
-
-
-
-
-
+  
+</script>
 
 
 
@@ -251,6 +259,11 @@
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-top: 10px solid #83929a
+}
+
+.checked {
+  color: #fff;
+  font-size:12px;
 }
 
 </style>

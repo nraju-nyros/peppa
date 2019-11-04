@@ -1,0 +1,241 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <span style="font-size: 33px;">  
+    <%= @dish.ratings.average(:rating).present? ? @dish.ratings.average(:rating).round(1) : 0 %> 
+  </span> &nbsp; &nbsp;
+  <span>Out of  5 <br> stars</span> <br>&nbsp; <i style="padding-top: 10px;"class="review-rating" data-score = " <%= @dish.ratings.average(:rating).present? ? @dish.ratings.average(:rating).round(1) : 0 %>"></i> 
+ 
+</div> 
+  <i >Overall rating of <%= @dish.ratings.count(:rating) %> <%= (@dish.ratings.count) == 1 ? 'Review' : 'Reviews'%></i>
+
+
+<div class="row">
+  <div class="side">
+    <div>5 stars</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div><%= @dish.ratings.where(rating: 5).count %></div>
+  </div>
+
+  <div class="side">
+    <div>4 stars</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-4"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div><%= @dish.ratings.where(rating: 4).count %></div>
+  </div>
+
+  <div class="side">
+    <div>3 stars</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-3"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div><%= @dish.ratings.where(rating: 3).count %></div>
+  </div>
+
+  <div class="side">
+    <div>2 stars</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-2"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div><%= @dish.ratings.where(rating: 2).count %></div>
+  </div>
+
+  <div class="side">
+    <div>1 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-1"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div><%= @dish.ratings.where(rating: 1).count %></div>
+  </div>
+</div>
+
+<style type="text/css">
+.side {
+  float: left;
+  width: 15%;
+  margin-top:10px;
+}
+
+.middle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+.right {
+  padding-left: 30px;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+  border-radius: 4px;
+  border-left: 1px solid;
+}
+
+.bar-5 {width: 100%; height: 18px; background-color: #f7aa97;}
+.bar-4 {width: 100%; height: 18px; background-color: #f7aa97;}
+.bar-3 {width: 100%; height: 18px; background-color: #f7aa97;}
+.bar-2 {width: 100%; height: 18px; background-color: #f7aa97;}
+.bar-1 {width: 100%; height: 18px; background-color: #f7aa97;}
+</style>
+
+
+
+<script type="text/javascript">
+
+ var rating = '<%= @dish.ratings.average(:rating) %>'
+ var total_ratings = '<%= @dish.ratings.count(:rating) %>'
+ var avg = rating/total_ratings
+
+ console.log(rating, total_ratings, avg)
+
+  $('.bar-5').css('width', function(){
+    var bar5 = '<%= @dish.ratings.where(rating: 5).count %>';
+    console.log(rating, total_ratings, bar5)
+
+    if (bar5 < 1){
+      return '0%'
+    }
+
+    if (bar5 < 5 && total_ratings != 1){
+      return '50%'
+    }
+
+    if (bar5 < 5 && total_ratings < 3){
+        return '100%'
+    }
+  });
+
+
+  $('.bar-4').css('width', function(){
+    var bar4 = '<%= @dish.ratings.where(rating: 4).count %>'
+    console.log(rating, total_ratings, bar4)
+
+    if (bar4 < 1){
+      return '0%'
+    }
+
+    if (bar4 < 5 && total_ratings != 1){
+      return '50%'
+    }
+     
+    if (bar4 < 5 && total_ratings < 3){
+      return '100%'
+    }
+  });
+
+  $('.bar-3').css('width', function(){
+    var bar3 = '<%= @dish.ratings.where(rating: 3).count %>'
+ 
+    if (bar3 < 1){
+      return '0%'
+    }
+
+    if (bar3 < 5 && total_ratings != 1){
+      return '50%'
+    }
+
+    if (bar3 < 5 && total_ratings < 2){
+        return '100%'
+    }
+  });
+
+
+  $('.bar-2').css('width', function(){
+    var bar2 = '<%= @dish.ratings.where(rating: 2).count %>'
+    
+    if (bar2 < 1){
+      return '0%'
+    }
+
+    if (bar2 < 5 && total_ratings != 1){
+      return '50%'
+    }
+
+    if (bar2 < 5 && total_ratings < 2){
+      return '100%'
+    }
+    
+  });
+
+  $('.bar-1').css('width', function(){
+    var bar1 = '<%= @dish.ratings.where(rating: 1).count %>'
+    
+    if (bar1 < 1){
+      return '0%'
+    }
+
+    if (bar1 < 5 && total_ratings != 1){
+      return '50%'
+    }
+
+    if (bar1 < 5 && total_ratings < 2){
+      return '100%'
+    }
+  });
+
+
+  $('.rating-form').raty({
+    path:'/assets/',
+    scoreName: 'rating[rating]',
+    score: 1
+
+  });
+
+  $(".review-rating").raty({
+        readOnly: true,
+        score: function() {
+        return $(this).attr("data-score");
+        },
+        path: "/assets/"
+  });
+
+  
+</script>

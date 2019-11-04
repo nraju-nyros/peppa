@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  respond_to :html, :json
 	# def after_sign_out_path_for(resource_or_scope)
  #    new_admin_session_path
  #  end
@@ -29,7 +30,7 @@ class ApplicationController < ActionController::Base
  
 
   def after_sign_out_path_for(resource_or_scope)
-    root_path
+  request.referer  || super
   end
 
    def after_sign_in_path_for(resource_or_scope)

@@ -1,15 +1,27 @@
 <% if @dishes.present? %>
   <% @dishes.each do |d| %>
     <% d.pictures.each do|p|%>
-      <div class="col-md-4 image-box " onclick="window.location.href='<%=dish_path(d)%>'">
+      <div class="col-md-4 image-box " >
         <div class="card" style="border:none;">
           <%= link_to image_tag(p.image_url, :class => 'image-box1 hover_img'), dish_path(d)   %>
-          <div class="rating">
-            <%= image_tag ("rating.png") %>
-            <span> 
-              <%= d.ratings.average(:rating).present? ? d.ratings.average(:rating).round(1) : 0 %>
-            </span>
-            <p class="votes"><%= d.ratings.count(:rating) %> votes</p>
+        
+          <div class="rating single_item" id ="dish_<%= d.id %>">
+            <% if current_user.present? %>
+            <% pre_like = d.likes.find { |like| like.user_id == current_user.id} %>
+        
+              <% if pre_like %>
+                <%= link_to '', dish_like_path(d, pre_like), :class => 'fa fa-heart', :id => 'heart',method: :delete, remote: :true%>
+              <% else %>
+                <%= link_to '', dish_likes_path(d),:class => 'fa fa-heart-o', :id => 'heart1', method: :post,  remote: :true %>
+                 <% end %>
+            <p class="votes" ><%= d.likes.count %> <%= (d.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+
+             <% else %>
+                 <%= link_to '', dish_likes_path(d),:class => 'fa fa-heart-o', :id => 'heart1', method: :post %>
+                   <p class="votes" ><%= d.likes.count %> <%= (d.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <% end %>
+       
           </div>
           <figcaption>
             <div>

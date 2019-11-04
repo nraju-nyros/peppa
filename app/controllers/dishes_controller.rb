@@ -5,8 +5,10 @@ class DishesController < ApplicationController
   end
 
   def show
-    @rating = Rating.new
+  
     @dish = Dish.find(params[:id])
+   
+    @rating = Rating.new
   end
 
   def new 
@@ -26,7 +28,8 @@ class DishesController < ApplicationController
 
 
   def edit 
-  
+    @dish = Dish.find(params[:id])
+    @rating = Rating.find(params[:id])
   end 
    
   def update 

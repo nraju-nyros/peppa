@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-
- 
-
   // Sort by price and average rating onchange dishes in searchpage
   $('.sort').on('change', function (e) {
     var name = getUrlVars()["search"];  
@@ -49,10 +46,6 @@ $(document).ready(function () {
   });
 
 
-
-  
-
-
   // Sorting onchange dietary checkboxes in searchpage
   $('.sort_dietary').on('change', function (e) {
     var category = [];
@@ -76,8 +69,13 @@ $(document).ready(function () {
   $('.sort_dish_dietary').on('change', function (e) {
  
     var selected = this.value;
+
+    if(selected == "all"){
+      data = {all: this.value}
+    }
+
   
-    if(selected == "1"){
+    else if(selected == "1"){
       data = {veg: this.value}
     }
     else if(selected == "2"){
@@ -106,7 +104,7 @@ $(document).ready(function () {
    if ($('.pagination').length) {
     $(window).scroll(function() {
       var url = $('.pagination .next_page').attr('href');
-      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 100) {
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 400) {
         $('.pagination').text("Please Wait...");
         return $.getScript(url);
       }
@@ -126,18 +124,6 @@ $(document).ready(function () {
   $('.selectBox, label').on('click', function (e) {
       e.stopPropagation();
   });
-
-
-   $('#search_dish').click(function() {
-    $('#search').focus();
-        $('html, body').animate({scrollTop: 0 }, 'slow');
-        
-    });
-  
-
-
-
- 
 
 });
 
@@ -224,11 +210,7 @@ function initMap() {
   }
 }
 
-// Index page right side options search and contact us
-function search_dish(){
-  document.getElementById("search").focus();
-   $('html, body').animate({scrollTop:0}, 'slow');
-}
+
 
   
 

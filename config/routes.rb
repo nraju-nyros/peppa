@@ -50,6 +50,23 @@ Rails.application.routes.draw do
     resources :likes
   end
 
+  resources :dishes do
+    resources :ratings
+  end
+
+
+  resources :dishes do
+    resources :ratings do
+      member do
+        put "like" => 'ratings#upvote'
+        put "unlike" => 'ratings#downvote'
+      end
+    end
+
+  end
+
+
+
 
   
 

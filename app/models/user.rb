@@ -2,12 +2,14 @@ class User < ApplicationRecord
   has_many :ratings
  
   has_many :likes, dependent: :destroy
+  
 
+  acts_as_voter
 
   validates_presence_of :name,  message: "*Please Enter Your Name"
  
 
-  validates_presence_of :password, message: "*Please Enter Your Password"
+  validates_presence_of :password, message: "Please Enter Your Password"
 
   validates_confirmation_of :password
   validates :email, format: {

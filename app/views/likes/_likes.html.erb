@@ -1,0 +1,7 @@
+ <% pre_like = @dish.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+   <%= link_to '', dish_like_path(@dish, pre_like), :class => 'fa fa-heart', :id => 'heart',method: :delete, remote: :true %>
+  <% else %>
+    <%= link_to '', dish_likes_path(@dish),:class => 'fa fa-heart-o', :id => 'heart1', method: :post, remote: :true %>
+    <% end %>
+   <p class="votes" ><%= @dish.likes.count %> <%= (@dish.likes.count) == 1 ? 'Like' : 'Likes'%></p>

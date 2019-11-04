@@ -1,0 +1,58 @@
+<br><br>
+  <div align="center">
+  <h3>Edit Review</h3>
+   <%= form_for @rating, url: {action: :update} do |f| %>                       
+      <div class="form-group">
+        <div class="col-sm-4">    
+            <%= f.text_area :comments ,:rows => 2, :cols => 50, :class => 'form-control', :placeholder => 'Write your review here'%>
+            
+        </div>
+      </div> 
+      <span class= "rating-form" required = 'true'></span><br>
+      
+      <div class= "form-group" >
+        <div class="col-sm-8">    
+          <%= f.submit "Submit Review",class: "btn btn-info btn-sm modal_btn" %> 
+        </div>
+      </div> 
+    <% end %>
+  </div>
+
+<style type="text/css">
+  .img{
+    border-radius: 50%;
+  }
+</style>
+
+<script type="text/javascript">
+  $('.rating-form').raty({
+      path:'/assets/',
+      scoreName: 'rating[rating]'
+  });
+$('input[name="rating-rating"]').addClass('required');
+</script>
+
+
+<script type="text/javascript">
+
+    $(".modal_btn").click(function(){
+
+    jQuery.validator.addMethod("lettersonly", function(value, element) {
+      return this.optional(element) || /^[a-zA-Z\\ \\.\\]+$/.test(value);
+    }, "Letters only please"); 
+     
+      $(".edit_rating").validate();
+
+      $("#rating_comments").rules("add", {
+        required:true,
+          minlength:10,
+          maxlength:300,
+          lettersonly: true,
+           messages: {
+                required: "*Please Enter comment."
+        }
+      });
+    })
+
+     
+</script>

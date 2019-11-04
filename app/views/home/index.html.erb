@@ -1,4 +1,5 @@
 
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md fixed-top">
   <div class="container">
@@ -25,8 +26,6 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-       
-  
          <li class="nav-item active">
           <ul class="nav navbar-nav ml-auto">
             <% if current_user.present? %>
@@ -50,10 +49,7 @@
               <% end %>
             </li>
           </ul>
-        </li> 
-
-        
-
+        </li>  
       </ul>
     </div>
   </div>
@@ -64,7 +60,7 @@
       <div class="title">What do you <i>really</i> feel like?</div>
         <div class="search">
         	<%= form_tag search_page_path,  method: :get, enforce_utf8: false do %>
-            <input type="text" name="search" id="search" class="form-control food_search"       placeholder="Chips and burgers" style="width: 53%; height: 50px;">
+            <input type="text" name="search" id="search" class="form-control food_search"       placeholder="Biryani and rice" style="width: 53%; height: 50px;">
               <button class="btn btn-default" id="submitDetails">
                 <%= image_tag ("search.png")%><span style="color: #5ac7f9;padding-left: 5px;font-size: 15px;">Search</span>
               </button>
@@ -225,8 +221,16 @@
     }
   });
    companyList.autocomplete('option','change').call(companyList);
+
+
+
+
+
+  
+
+   
+
+
+ 
   </script>
 
-<style type="text/css">
-  
-</style>

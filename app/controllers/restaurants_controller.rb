@@ -12,8 +12,9 @@ class RestaurantsController < ApplicationController
         end
         @dish_count = @dish_avg.count
         @dish_sum = @dish_avg.sum
-
         @dish_rating = @dish_sum/@dish_count
+
+        
         
     if params[:price]
       @dishes =  @restaurant.dishes.by_price(params[:price])
@@ -28,6 +29,10 @@ class RestaurantsController < ApplicationController
 
     if params[:ratings_filter]
       @dishes =  @restaurant.dishes.sort_ratings(params[:ratings_filter])
+    end
+
+    if params[:all]
+      @dishes =  @restaurant.dishes
     end
 
     if params[:veg]

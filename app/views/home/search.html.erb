@@ -3,21 +3,38 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg  static-top">
   <div class="container">
-    <%= link_to image_tag('logo.png', :class => 'navbar-brand'), home_index_path   %>
+    <%= link_to image_tag('logo.png', :class => 'navbar-brand'), root_path   %>
     <div class="header-list loc-srch">
       <ul class="nav navbar-nav">
        
       </ul>
     </div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+     <ul class="navbar-nav ml-auto">
+         <li class="nav-item active">
           <ul class="nav navbar-nav ml-auto">
+            <% if current_user.present? %>
             <li class="nav-item dropdown">
-            
+              
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <%= image_tag('user.png', :class => 'user_image') %> <%= current_user.name %></a>
+              <div class="dropdown-menu" style="width: 100px;"> 
+                <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'dropdown-item') %>
+              </div>
+
+              <% else %>
+
+                <li class="nav-item active">
+                  <%= link_to 'Login', new_user_session_path, :class => 'nav-link' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to 'Signup', new_user_registration_path, :class => 'nav-link' %>
+                </li> 
+              <% end %>
             </li>
           </ul>
-        </li>   
+        </li>  
       </ul>
     </div>
   </div>
@@ -25,6 +42,7 @@
 
 
 <div class="container-fluid album text-muted">
+  <% if @dishes.present? %>     
   <div>
   <ul class="filter">
     <li style="width: 50px;">
@@ -58,7 +76,7 @@
         <div class="selectBox" onclick="showCheckboxes()">
           <label>
           <select>
-            <option >All Dietary</option>
+            <option  >All Dietary</option>
           </select>
          </label>
           <div class="overSelect"></div>
@@ -85,37 +103,38 @@
           <div id = "dishes" style="float: left;overflow-y:auto; height: 500px;clear: both">
             <%= render :partial => 'home/search_dishes' %>  
           </div>
-
-          
-
-         
-         
         </div>
 
         <div id='map_canvas'class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height: 500px;width: 635px;">
           
         </div>
-       
       </div>
 
-       <div id="paginate_load">
+      <div id="paginate_load">
           <%= will_paginate @dishes, class: 'pagination pagination-sm' %>
-        </div> 
+      </div> 
     </div>
   </div>
+<% else %>
+
+<div class="no_data" >
+    No results found
+</div>
+  
+<% end %>
 
    
 <script type="text/javascript">
   $(document).ready(function () {
  
-// Onload google maps
+  // Onload google maps
   google.maps.event.addDomListener(window, 'load', initMap);
 
   // Home page scroll loading
    if ($('.pagination').length) {
     $('#dishes').scroll(function() {
       var url = $('.pagination .next_page').attr('href');
-      if (url && $('#dishes').scrollTop() > $(document).height() - $('#dishes').height() - 500) {
+      if (url && $('#dishes').scrollTop() > $(document).height() - $('#dishes').height() - 100) {
         $('.pagination').text("Please Wait...");
         return $.getScript(url);
       }
@@ -123,27 +142,7 @@
     return $('#dishes').scroll();
   }
 
-
-
-
-
-
-
- 
-
-
-  
-
-
-
- 
-
-
 });
-
-
-
-
 
 </script>
 

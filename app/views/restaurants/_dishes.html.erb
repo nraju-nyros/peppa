@@ -4,13 +4,11 @@
       <div class="col-md-4 image-box no_padding_right no_padding_left" style="margin-bottom: 0px; padding-right: 5px; padding-left: 0px; padding-bottom: 5px;" onclick="window.location.href='<%=dish_path(d)%>'">
         <div class="card" style="border:none;">
           <%= link_to image_tag(p.image_url, :class => 'image-box1 hover_img'), dish_path(d)   %>
-          <div class="rating">
-            <%= image_tag ("rating.png") %>
-            <span><%= d.ratings.average(:rating).round(1) %></span>
-          
-
-            <p class="votes"><%= d.ratings.count(:rating) %> votes</p>
+           <div class="rating single_item" id ="dish_<%= d.id %>">
+             
+       
           </div>
+         
           <figcaption>
             <div>
               <h2><%= d.name %></h2>

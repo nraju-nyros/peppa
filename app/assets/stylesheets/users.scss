@@ -69,11 +69,16 @@
 
   .top-left {
   position: absolute;
-  top: 36px;
-  left: 35px;
-  color: #fff;
+  top:450px;
+  left:10px;
+  color: #f79b9b;
   font-size: 50px;
   font-weight: 900;
+
+}
+
+ .top-left:hover{
+  color: #f79b9b;
 }
 
 .bottom-right {

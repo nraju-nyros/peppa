@@ -1,0 +1,54 @@
+
+   <% if current_user.present? %>
+    <% like = @rating.votes_for.find { |vote| vote.vote_flag == true} %>
+    <% dislike = @rating.votes_for.find { |vote| vote.vote_flag == false} %>
+             <% if like.present? %>
+
+                    <%= link_to like_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-up" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_upvotes.size %>
+                      <% end %>&nbsp;&nbsp;
+
+
+                        <%= link_to unlike_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-o-down" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_downvotes.size %>
+                      <% end %>
+           
+
+                <% elsif dislike.present? %>
+
+                     <%= link_to like_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-o-up" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_upvotes.size %>
+                      <% end %>&nbsp;&nbsp;
+
+                      <%= link_to unlike_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-down" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_downvotes.size %>
+                      <% end %>&nbsp;&nbsp;
+             
+
+                <% else %>
+                   <%= link_to like_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-o-up" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_upvotes.size %>
+                      <% end %>&nbsp;&nbsp;
+
+                      <%= link_to unlike_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-o-down" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_downvotes.size %>
+                      <% end %>&nbsp;&nbsp;
+                 <% end %>
+    <% else %>
+
+    <%= link_to like_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-o-up" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_upvotes.size %>
+                      <% end %>&nbsp;&nbsp;
+
+                      <%= link_to unlike_dish_rating_path(@dish, @rating), method: :put, remote: :true do %>
+                     <i class="fa fa-thumbs-o-down" style="font-size:18px;"></i>&nbsp;
+                      <%= @rating.get_downvotes.size %>
+                      <% end %>&nbsp;&nbsp;
+     <% end %>
