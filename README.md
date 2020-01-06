@@ -1,6 +1,6 @@
 # README
 
-* git clone https://github.com/nraju-nyros/foodfie
+* git clone https://github.com/nraju-nyros/peppa
 
 * cd foodfie
 
